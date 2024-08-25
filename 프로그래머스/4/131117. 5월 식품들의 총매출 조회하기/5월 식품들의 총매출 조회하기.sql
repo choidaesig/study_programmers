@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+
+SELECT  p.PRODUCT_ID,p.PRODUCT_NAME,sum(o.AMOUNT*p.PRICE) TOTAL_SALES
+from FOOD_ORDER o, FOOD_PRODUCT p
+where o.PRODUCT_ID=p.PRODUCT_ID and to_char(PRODUCE_DATE,'YYMM')='2205'
+group by p.PRODUCT_ID,p.PRODUCT_NAME
+order by 3 desc, 1 
