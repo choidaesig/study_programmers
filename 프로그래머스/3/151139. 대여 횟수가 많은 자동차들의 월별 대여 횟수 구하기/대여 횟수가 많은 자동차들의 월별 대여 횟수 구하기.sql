@@ -1,3 +1,17 @@
+-- 코드를 입력하세요
+/*
+with five_over as (
+SELECT CAR_ID
+from CAR_RENTAL_COMPANY_RENTAL_HISTORY
+group by car_id
+having count(*)>=5
+)
+select EXTRACT(MONTH FROM a.START_DATE) MONTH, a.car_id CAR_ID, count(*) RECORD
+from CAR_RENTAL_COMPANY_RENTAL_HISTORY a, five_over b
+where a.car_id=b.car_id and substr(to_char(a.START_DATE,'YYYY-MM-DD'),6,2) in ('08','09','10')
+group by EXTRACT(MONTH FROM a.START_DATE), a.car_id
+order by 1 asc, 2 desc
+*/
 SELECT
     EXTRACT(MONTH FROM S.START_DATE) AS MONTH,  -- 월을 숫자로 바로 추출
     S.CAR_ID,
